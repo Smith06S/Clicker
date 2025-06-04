@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style.css">
+    <title>Clicker</title>
+
+</head>
+
+<body>
+    <p id="count">nbr</p>
+    <img id="0" data-id="0" src="images/kenney_alien-ufo-pack/shipBlue_manned.png" onclick="Clicked(event)">
+
+    <section>
+        <section onclick="Options('opt1')"><p id="opt1">18</p></section>
+        <section onclick="Options('opt2')"><p id="opt2">50</p></section>
+        <section onclick="Options('opt3')"><p id="opt3">100</p></section>
+        <section onclick="Options('opt4')"><p id="opt4">200</p></section>
+    </section>
+
+    <div class="overlayWindow" id="popup">
+        <p> YOU WON !!!</p>
+    </div>
+
+    <script src="./clicker.js"></script>
+</body>
+
+</html>
+
+
