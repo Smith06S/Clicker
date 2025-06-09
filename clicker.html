@@ -8,35 +8,31 @@
 </head>
 
 <body>
-    <div class="ufo">
-        <p id="count">nbr</p>
+    <div id="counter">
+        <p id="count">0</p>
+        <p id="perSecond">0/s</p>
     </div>
 
-    <section>
-        <section onclick="Options('opt1')">
-            <p id="opt1">30</p>
-        </section>
-        <section onclick="Options('opt2')">
-            <p id="opt2">80</p>
-        </section>
-        <section onclick="Options('opt3')">
-            <p id="opt3">200</p>
-        </section>
-        <section onclick="Options('opt4')">
-            <p id="opt4">500</p>
-        </section>
-        <section onclick="Options('opt5')">
-            <p id="opt5">1000</p>
-        </section>
-        <section onclick="Options('opt6')">
-            <p id="opt6">1500</p>
-        </section>
-    </section>
+    <div class="container">
+        <ul>
+            <li onclick="Options('opt1')" id="opt1">30 <span>Gun</span></li>
+            <li onclick="Options('opt2')" id="opt2">80 <span>Energy</span></li>
+            <li onclick="Options('opt3')" id="opt3">200 <span>Power</span></li>
+            <li onclick="Options('opt4')" id="opt4">500 <span>Mine</span></li>
+            <li onclick="Options('opt5')" id="opt5">1000 <span>Grenade</span></li>
+            <li onclick="Options('opt6')" id="opt6">1500 <span>Canon</span></li>
+        </ul>
+    </div>
 
     <div class="overlayWindow" id="popup">
-        <p> YOU WON !!!</p>
+        <p>YOU WON !!!</p>
+        <div id="fireworks">
+            <img src="images/big.webp">
+            <img src="images/big.webp">
+        </div>
     </div>
 
     <script src="./clicker.js"></script>
 </body>
+
 </html>

@@ -1,59 +1,185 @@
 body {
-  background-image: url("images/background1.jpg");
-  font-family: 'Indie Flower', cursive;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/background1.jpg");
+    font-family: 'Indie Flower', cursive;
 }
 
+/* the count on the top left */
+#counter {
+    width: 100px;
+    padding-left: 20px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#counter p {
+    margin: 0;
+    opacity: 0.7;
+    font-size: 30px;
+    color: white;
+}
+
+/* the victory overlay */
 .overlayWindow {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: white;
-  z-index: 1100;
-  justify-content: center;
-  align-items: center;
-}
-
-.overlayContent {
-  position: fixed;
-  background: black;
-  z-index: 1110;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    font-size: 100px;
+    font-weight: bold;
+    color: white;
+    z-index: 1100;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .overlayWindow.active {
-  display: flex;
+    display: flex;
 }
 
-.image-container {
-  position: absolute;
-  width: 100px; /* matches the UFO image width */
-  height: auto;
+.overlayWindow p {
+    color: rgba(255, 255, 255, 0.8);
+    z-index: 2; 
+    position: relative;
 }
 
-.image-container img {
-  display: block;
-  width: 100%;
-  height: auto;
+#fireworks img:nth-child(1) { /* first firework in the overlay*/
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    width: 35%;
 }
 
-.health-bar-container {
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px; /* matches image width */
-  height: 8px;
-  background-color: #555;
-  border: 1px solid #000;
-  border-radius: 4px;
-  overflow: hidden;
+#fireworks img:nth-child(2) { /* second firework in the overlay*/
+    position: fixed;
+    top: 7%;
+    left: 7%;
+    width: 25%;
+}
+
+/* image containing the image and health bar*/
+.image-container { 
+    position: absolute;
+    width: 100px;
+    height: auto;
+    animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float { /* animate the image-container */
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.image-container img { /* image of the ufo */
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.image-container img:hover {
+    transform: scale(1.05);
+}
+
+.health-bar-container { /* health bar under the ufo */
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 8px;
+    background-color: #555;
+    border: 1px solid #000;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
 .health-bar {
-  height: 100%;
-  width: 100%;
-  background-color: #4caf50;
-  transition: width 0.3s ease, background-color 0.3s ease;
+    height: 100%;
+    width: 100%;
+    background-color: #4caf50;
+    transition: width 0.3s ease, background-color 0.3s ease;
 }
+
+/* options */
+.container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* animation on the options */
+ul li {
+    width: 200px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1.5em;
+    cursor: pointer;
+    padding: 1em;
+    background: rgb(43, 43, 43);
+    position: relative;
+    color: white;
+    border-radius: 5px;
+}
+
+ul li::before,
+ul li::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    border-radius: 5px;
+    width: 105%;
+    transition: all 0.4s;
+}
+
+ul li::before {
+    left: 0%;
+    height: 130%;
+    background: linear-gradient(to right, #021B79, #0575E6);
+}
+
+ul li::after {
+    left: -10%;
+    height: 120%;
+    background: #ffffff56;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.164);
+}
+
+ul li:hover::before {
+    transform: translateX(-2.5%);
+}
+
+ul li:hover::after {
+    transform: translateX(15%);
+}
+
+/* image of the hit appear appearance */
+.hit-image {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+
