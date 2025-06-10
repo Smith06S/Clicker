@@ -227,4 +227,3 @@ window.onload = () => {
 };
 
 
-// riguardare le immagini
